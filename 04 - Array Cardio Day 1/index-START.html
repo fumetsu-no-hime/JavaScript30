@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Array Cardio 💪</title>
 </head>
+
 <body>
   <p><em>Psst: have a look at the JavaScript Console</em> 💁</p>
   <script>
@@ -29,33 +31,158 @@
 
     const flavours = ['Chocolate Chip', 'Kulfi', 'Caramel Praline', 'Chocolate', 'Burnt Caramel', 'Pistachio', 'Rose', 'Sweet Coconut', 'Lemon Cookie', 'Toffeeness', 'Toasted Almond', 'Black Raspberry Crunch', 'Chocolate Brownies', 'Pistachio Almond', 'Strawberry', 'Lavender Honey', 'Lychee', 'Peach', 'Black Walnut', 'Birthday Cake', 'Mexican Chocolate', 'Mocha Almond Fudge', 'Raspberry'];
 
-    const people = ['Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick', 'Beecher, Henry', 'Beethoven, Ludwig', 'Begin, Menachem', 'Belloc, Hilaire', 'Bellow, Saul', 'Benchley, Robert', 'Benenson, Peter', 'Ben-Gurion, David', 'Benjamin, Walter', 'Benn, Tony', 'Bennington, Chester', 'Benson, Leana', 'Bent, Silas', 'Bentsen, Lloyd', 'Berger, Ric', 'Bergman, Ingmar', 'Berio, Luciano', 'Berle, Milton', 'Berlin, Irving', 'Berne, Eric', 'Bernhard, Sandra', 'Berra, Yogi', 'Berry, Halle', 'Berry, Wendell', 'Bethea, Erin', 'Bevan, Aneurin', 'Bevel, Ken', 'Biden, Joseph', 'Bierce, Ambrose', 'Biko, Steve', 'Billings, Josh', 'Biondo, Frank', 'Birrell, Augustine', 'Black Elk', 'Blair, Robert', 'Blair, Tony', 'Blake, William'];
+    const people = ['Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick', 'Beecher, Henry', 'Beethoven, Ludwig', 'Begin, Menachem', 'Belloc, Hilaire', 'Bellow, Saul', 'Benchley, Robert', 'Benenson, Peter', 'Ben-Gurion, David', 'Benjamin, Walter', 'Benn, Tony', 'Bennington, Chester', 'Benson, Leana', 'Bent, Silas', 'Bentsen, Lloyd', 'Berger, Ric', 'Bergman, Ingmar', 'Berio, Luciano', 'Berle, Milton', 'Berlin, Irving', 'Berne, Eric', 'Bernhard, Sandra', 'Berra, Yogi', 'Berry, Halle', 'Berry, Wendell', 'Bethea, Erin', 'Bevan, Aneurin', 'Bevel, Ken', 'Biden, Joseph', 'Bierce, Ambrose', 'Biko, Steve', 'Billings, Josh', 'Biondo, Frank', 'Birrell, Augustine', 'Black, Elk', 'Blair, Robert', 'Blair, Tony', 'Blake, William'];
 
+    //過濾器
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
+    const filterData = inventors.filter(function (inventor) {
+      if (inventor.year >= 1500 && inventor.year < 1600) {
+        return true;
+      } else {
+        return false;
+      }
+    });
 
+    const filterData2 = inventors.filter((inventor) => (inventor.year >= 1500 && inventor.year < 1600) ? true : false);
+    // console.log(filterData2);
+
+    //1.filter練習，複習includes用法 
+    // const filterName = inventors.filter((inventor) => {
+    //   if (inventor.first.includes('l') || inventor.first.includes('L')) {
+    //     return true;
+    //   }
+    // })
+
+    const filterName2 = inventors.filter((inventor) => (inventor.first.includes('l') || inventor.first.includes('L') ? true : false));
+    // console.log(filterName2);
     // Array.prototype.map()
     // 2. Give us an array of the inventors' first and last names
+
+    // const mapArray = inventors.map((inventor) => {
+    //   inventor.age = inventor.passed - inventor.year;
+    //   return inventor;
+    // });
+    const mapArray2 = inventors.map((inventor) => {
+      const obj = {
+        first: inventor.first,
+        last: inventor.last,
+        year: inventor.year,
+        passed: inventor.passed,
+        age: inventor.passed - inventor.year
+      }
+      return obj;
+    });
+    // console.log(mapArray);
+    console.table(mapArray2);
+    console.table(inventors);
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
 
+    //sort(function(第一個值,第二個值)=>{});
+
+    // const sortArray = inventors.sort((first,second)=>{
+    //   // if ((first.year - second.year) > 0){
+    //   //   return 1;
+    //   // }else{
+    //   //   return -1;
+    //   // }
+    //   console.log(second)
+    //   return (first.year - second.year);
+    // });
+    // console.table(sortArray);
+
+    // const sortArray2 = inventors.sort()
+    // console.table(sortArray2);
+
+
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live?
+    const sum = [0, 1, 2, 3].reduce((acc, cur) => {
+      // console.log(acc,cur);
+      return acc + cur;
+    });
 
+    const years = inventors.reduce((acc, cur) => {
+      // console.log(acc);
+      return acc + (cur.passed - cur.year)
+    }, 0);
+    // console.log(years);
+
+    const years2 = mapArray2.reduce((acc, mapArray) => {
+      let age = acc.totalAge + (mapArray.passed - mapArray.year);
+      let age2 = acc.totalAge2 + mapArray.age;
+      return {
+        totalAge: age,
+        totalAge2: age2,
+      };
+    }, {
+      totalAge: 0,
+      totalAge2: 0,
+    });
+    // console.log(years2);
     // 5. Sort the inventors by years lived
+
+    const liveSort = mapArray2.sort((a,b) => {
+      let aYear = a.passed - a.year;
+      let bYear = b.passed - b.year;
+      if (aYear > bYear){
+        return 1;
+      }else{
+        return -1;
+      }
+    });
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
-
+    // const container = document.querySelector('.mw-category');
+    const aHerfs = Array.from(document.querySelectorAll('.mw-category a')) 
+    const filter = aHerfs.filter((aHerfs)=>{
+      return aHerfs.textContent.includes('de');
+    })
+    // const newArray = aHerfs.filter((HTMLElement)=>{
+    //   return HTMLElement.textContent.includes('de')
+    // });
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
 
+      const alphabetSort = people.sort((a,b)=>{
+        const aLast = a.split(', ')[1];
+        const bLast = b.split(', ')[1];
+        // const [aFirst,aLast] = a.split(', ')
+        // const [bFirst,bLast] = b.split(', ')
+        if (aLast > bLast){
+          return 1;
+        }else{
+          return -1;
+        }
+      })
+      // console.log(alphabetSort);
     // 8. Reduce Exercise
     // Sum up the instances of each of these
-    const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
-
+    const data = ['car', 'car', 'truck', 'shane','truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck'];
+    
+    const sumData = data.reduce((acc,cur) => {
+      console.log(acc[cur]);
+      //假設acc[cur]為undefinrd,尚未有這個屬性
+      if (!acc[cur]){
+        acc[cur] = 1;
+      }else{
+        acc[cur] =acc[cur] + 1;
+      }
+      // acc[cur]++;
+      return acc;
+    },{
+      // car: 0,
+      // truck: 0,
+      // bike: 0,
+      // van: 0,
+      // walk: 0,
+    })
+    console.log(sumData);
   </script>
 </body>
+
 </html>
