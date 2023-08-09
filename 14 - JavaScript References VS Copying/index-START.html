@@ -67,6 +67,17 @@
     console.log('-----------');
     console.log(spreadArr);
 
+    //slice
+    let sliceArr = players.slice()
+    sliceArr[0] = 'mike';
+    // console.log('1',players);
+    // console.log('2',sliceArr);
+    //slice(param1,param2)
+    //param1 : 從第幾個元素取自己要的陣列  /  不填寫則以0代替
+    //param2 : 取到第幾位  /  不填寫則以陣列長度代替
+    let arr = [1,2,3,4,5,6];
+    let slice = arr.slice(-7)
+    console.log(slice);
     // 现在再修改 team5，原数组不会变了
 
     // 对 Object 类型的数据来说也是一样的，我们用一个 person 例子来说明
@@ -105,12 +116,19 @@
       name: 'shane',
       aggress: '台中市北區',
       props: [
-        {
-          props1: 'laptop',
-          props2: 'desktop'
-        }
+        
+          props1 = 'laptop',
+          props2 = 'desktop'
+        
       ],
     };
+
+    let assign = Object.assign({},obj);
+    assign.name = 'lee';
+    assign.props[0] = 'broken laptop';
+    console.log(obj);
+    console.log(assign);
+    
     // const copy = {...obj};
     // copy.name = 'lee';
     // copy.props[0] = 'broken laptop';
@@ -118,13 +136,13 @@
     // console.log(copy);
 
     const json = JSON.stringify(obj)
-    console.log(json);
+    // console.log(json);
     const convert = JSON.parse(json)
-    obj.name = 'lee'
+    // obj.name = 'lee'
     convert.props[0] = 'broken laptop'
-    convert.props[1] = 'broken desktop'
-    console.log(obj);
-    console.log(convert);
+    // convert.props[1] = 'broken desktop'
+    // console.log(obj);
+    // console.log(convert);
   </script>
 
 </body>
