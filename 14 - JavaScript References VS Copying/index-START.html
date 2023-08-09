@@ -8,14 +8,33 @@
 
   <script>
     // 从 String、Number、Boolean 类型的值开始：
+    let a = 123;
+    let b;
+    b = a;
+    b++;
+    console.log(a,b);
 
+    let string = 'mike';
+    let copyString;
+    copyString = string;
+    copyString = copyString + 'lee'
+    console.log(string,copyString);
     // 首先我们有一个数组
     const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
+
+    // let copyArray;
+    // copyArray = players;
+
+    // copyArray[0] = 'mike';
+    // console.log(players);
+    // console.log('========');
+    // console.log(copyArray);
+   
 
     // 现在我们想要复制它
 
     // 也许你觉得可以直接这样修改复制后的数组:
-
+[]
     // 但我们修改这个数组的时候会发生什么呢？
 
     // 这就是问题所在
@@ -29,8 +48,22 @@
     // one day
 
     // 或者创建一个新数组，然后用 concat 方法来获取它
+     //複製
+     let concatArray = [].concat(players);
+    concatArray[0] = 'mike';
+    concatArray[1] = 'shane';
+    concatArray.push('sam','rio');
+    concatArray.splice()
+    console.log(concatArray);
+    console.log('--------');
+    console.log(players);
 
     // 再或者用 ES6 里面的扩展语法
+    let spreadArr = [...players];
+    spreadArr[0] = 'mike';
+    console.log(players);
+    console.log('-----------');
+    console.log(spreadArr);
 
     // 现在再修改 team5，原数组不会变了
 
