@@ -76,15 +76,16 @@
 
       };
 
-      document.querySelectorAll('.key').foreach(key => {
+      document.querySelectorAll('.key').forEach(key => {
         key.addEventListener('transitionend', TransitionendHandler)
-        function TransitionendHandler(e) {
-          if (e.propertyName === 'e.currentTarget') {
-            console.log(e.currentTarget);
-            e.currentTarget.classList.remove('playing')
-          }
+      });
+
+      function TransitionendHandler(e) {
+        if (e.propertyName === 'transform') {
+          console.log(e.currentTarget);
+          e.currentTarget.classList.remove('playing')
         }
-      })
+      }
 
       // console.log(document.querySelectorAll('.key'));
     })()
