@@ -161,11 +161,8 @@
   <script>
     const panels = document.querySelectorAll('.panel')
     panels.forEach(panel => {
-      panel.addEventListener('click', open)
-    });
-
-    panels.forEach(panel => {
       panel.addEventListener('transitionend', active)
+      panel.addEventListener('click', open)
     });
 
     function open() {
