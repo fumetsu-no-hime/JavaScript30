@@ -58,8 +58,8 @@ Fetch API 提供一个全局的方法 `fetch()`，这个方法（至少）需要
 
 语法如下：
 
-```js
-fetch(input, init).then(function(response) { ... });
+
+
 ```
 
 MDN 中有个[发送基本的 fetch 请求的示例](https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch#发起_fetch_请求)如下：
