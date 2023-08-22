@@ -1,19 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>HTML5 Canvas</title>
 </head>
-<body>
-<canvas id="draw" width="800" height="800"></canvas>
-<script>
-</script>
 
-<style>
-  html, body {
-    margin:0;
-  }
-</style>
+<body>
+  <canvas id="draw" width="800" height="800"></canvas>
+  <script>
+    const canvas = document.querySelector('#draw');
+    const drawArea = canvas.getContext('2d');
+    let color = 0;
+    let direction = -1;
+    let lineWidth = 0;
+    drawArea.strokeStyle = `hsl(${color},100%,50%)`
+    let drawing = false;
+
+    function initializeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      drawArea.strokeStyle = '#bada55';
+      drawArea.lineJoin = 'round';
+      drawArea.lineCap = 'round';
+      drawArea.lineWidth = 100;
+    }
+
+    initializeCanvas();
+    window.addEventListener('resize', initializeCanvas);
+
+    canvas.addEventListener('mousedown', (e) => {
+      console.log(e);
+      [x, y] = [e.offsetX, e.offsetY];
+      drawing = true;
+    })
+
+    canvas.addEventListener('mouseup', () => {
+      drawing = false;
+    })
+
+    canvas.addEventListener('mousemove', (e) => {
+      if (!drawing) return;
+      console.log("draw");
+      drawArea.beginPath();
+
+      color = color < 360 ? color + 1 : 0;
+      drawArea.strokeStyle = `hsl(${color},100%,50%)`
+
+      if (lineWidth < 1 || lineWidth > 100) {
+        direction *= -1
+      }
+      lineWidth += direction;
+      drawArea.lineWidth = lineWidth;
+
+      drawArea.moveTo(x, y);
+      drawArea.lineTo(e.offsetX, e.offsetY);
+      [x, y] = [e.offsetX, e.offsetY];
+      drawArea.stroke();
+    })
+
+    canvas.addEventListener('mouseleave', () => {
+      drawing = false;
+    })
+    
+  </script>
+
+  <style>
+    html,
+    body {
+      margin: 0;
+    }
+  </style>
 
 </body>
+
 </html>
