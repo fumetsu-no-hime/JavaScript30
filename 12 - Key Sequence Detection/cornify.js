@@ -20,7 +20,7 @@ var cornify_add = function (options) {
   // Track how often we cornified.
   cornify_count += 1;
 
-  // Prepare our lovely variables.
+  // Prepare our lovely variables.    
   var cornify_url = "https://www.cornify.com/";
   var numType = "px";
   var heightRandom = Math.random() * 0.75;

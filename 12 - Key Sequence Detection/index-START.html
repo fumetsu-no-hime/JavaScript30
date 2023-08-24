@@ -13,9 +13,9 @@
     const secretCode = 'shane';
 
     window.addEventListener('keyup',(e) => {
-      // console.log(e);
+      // console.log(e.key); 
       press.push(e.key);
-      // console.log(press);
+      console.log(press);
       press.splice(-secretCode.length - 1, press.length - secretCode.length)
       if (press.join('').includes('shane')){
         console.log('賓果!答對囉!');
