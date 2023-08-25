@@ -43,6 +43,20 @@
   </div>
 
   <script>
+    const images = document.querySelectorAll('.slide-in')
+    const windowScroll = window.innerHeight + window.scrollY;
+    const imgScroll = Image.offsetTop + Image.height;
+
+    function scrolHandler() {
+      images.forEach(image=>{
+        if (imgScroll < windowScroll){
+          image.classList.add('active')
+        }else{
+          image.classList.remove('active')
+        }
+      })
+    }
+
     function debounce(func, wait = 20, immediate = true) {
       var timeout;
       return function() {
@@ -57,6 +71,8 @@
         if (callNow) func.apply(context, args);
       };
     }
+
+    window.addEventListener('scroll', debounce(scrolHandler))
 
   </script>
 
