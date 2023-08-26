@@ -139,30 +139,25 @@
       ducimus, odit excepturi voluptate saepe ipsam. Voluptatem eum error voluptas porro officiis, amet! Molestias,
       fugit, ut! Tempore non magnam, amet, facere ducimus accusantium eos veritatis neque.</p>
 
-
-
-
   </div>
 
   <script>
-    const images = document.querySelectorAll('.slide-in')
-    const Image = document.querySelector('img')
-    const windowScroll = window.innerHeight + window.scrollY;
-    const imgScroll = Image.offsetTop + Image.height/2;
-    console.log(window);
-    console.log(Image.height);
+    const images = document.querySelectorAll('.slide-in');
 
-    function scrollHandler() {
+    function scrollHandler(image) {
+      const windowScroll = window.innerHeight + window.scrollY;
       images.forEach(image => {
-        if (Image.offsetTop < window.scrollY) {
+        // const imgScroll = image.offsetTop + image.height / 2;
+        // console.log(imgScroll);
+        if (image.offsetTop+image.height/2<windowScroll) {
           image.classList.add('active')
         } else {
           image.classList.remove('active')
         }
       })
-    }
+    };
 
-    function debounce(func, wait = 20, immediate = true) {
+    function debounce(func, wait = 10, immediate = true) {
       var timeout;
       return function () {
         var context = this, args = arguments;
